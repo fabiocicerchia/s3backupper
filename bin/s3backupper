@@ -2,6 +2,6 @@
 
 source conf/aws
 
-for FILE in $(cat conf/files); do
-  aws s3 cp $FILE s3://$bucket/$FILE
+for ITEM in $(cat conf/files); do
+  restic -r s3:s3.amazonaws.com/$bucket --verbose backup $ITEM
 done

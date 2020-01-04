@@ -1,5 +1,9 @@
 # S3Backupper
 
+## Dependencies
+
+ - [Restic](https://github.com/restic/restic)
+
 ## Config
 
 Change file under folder `conf`.
@@ -13,8 +17,15 @@ Change file under folder `conf`.
  - File Glob
  - Tests
  - TravisCI
- - docs
  - GitHub Page
  - Encryption
  - GUI
  - One-liner installer
+ - Compression
+ - Storages
+ - Scheduling
+ - Verify integrity
+ - Retention
+ - --help, --verbose, --progress, --version
+ - Autocreate bucket
+ - Use restic
