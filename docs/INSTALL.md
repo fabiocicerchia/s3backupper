@@ -12,8 +12,4 @@ Follow the guide [Setting up restic with Amazon S3](https://restic.readthedocs.i
 
 ## Config
 
-Change file under folder `conf`.
-
-## Run
-
-`./bin/s3backupper`
+Change the files under the folder `/usr/local/s3backupper/conf`.

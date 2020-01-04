@@ -6,8 +6,8 @@
 
 ## Documentation
 
-All the documentation is available in the folder docs.
+All the documentation is available in the folder [docs](docs).
 
 ## License
 
-MIT Licensed. See LICENSE for full details.
+MIT Licensed. See [LICENSE](docs/LICENSE.md) for full details.
