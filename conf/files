@@ -1,1 +1,6 @@
-/Users/fabiocicerchia
+# You can use the glob notation in order to match the files and/or folders you
+# wish to backup.
+#
+# Have a look at https://linuxhint.com/bash_globbing_tutorial/ and at
+# https://facelessuser.github.io/wcmatch/glob/ in order to understand better how
+# glob works.
