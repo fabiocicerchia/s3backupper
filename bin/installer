@@ -1,0 +1,19 @@
+#!/bin/bash
+
+if [ ! -x "$(which curl)" ]; then
+    echo >&2 "Please install curl or set it in your path. Aborting."
+    exit 1
+fi
+
+if [ ! -x "$(which unzip)" ]; then
+    echo >&2 "Please install unzip or set it in your path. Aborting."
+    exit 1
+fi
+
+curl -so /tmp/s3backupper.zip https://github.com/fabiocicerchia/s3backupper/archive/master.zip
+unzip /tmp/s3backupper.zip -d /usr/local/s3backupper
+ln -s /usr/local/bin/s3backuper /usr/local/s3backupper/bin/s3backupper
+
+/usr/local/s3backupper/bin/setup.sh
+
+echo "INSTALLED SUCCESSFULLY"

@@ -2,30 +2,12 @@
 
 ## Dependencies
 
- - [Restic](https://github.com/restic/restic)
+ - [Restic 0.9.6+](https://github.com/restic/restic)
 
-## Config
+## Documentation
 
-Change file under folder `conf`.
+All the documentation is available in the folder docs.
 
-## Run
+## License
 
-`./bin/s3backupper`
-
-## TODO
-
- - File Glob
- - Tests
- - TravisCI
- - GitHub Page
- - Encryption
- - GUI
- - One-liner installer
- - Compression
- - Storages
- - Scheduling
- - Verify integrity
- - Retention
- - --help, --verbose, --progress, --version
- - Autocreate bucket
- - Use restic
+MIT Licensed. See LICENSE for full details.

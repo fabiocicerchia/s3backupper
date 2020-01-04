@@ -2,27 +2,27 @@
 
 ### INSTALL RESTIC
 # Arch Linux
-if [ -f "$(which pacman)" ]; then pacman -S restic;
+if [ -x "$(which pacman)" ]; then pacman -S restic;
 # Debian
-elif [ -f "$(which apt-get)" ]; then apt-get install restic;
+elif [ -x "$(which apt-get)" ]; then apt-get install restic;
 # Fedora
-elif [ -f "$(which dnf)" ]; then dnf install restic;
+elif [ -x "$(which dnf)" ]; then dnf install restic;
 # macOS
-elif [ -f "$(which brew)" ]; then brew install restic;
+elif [ -x "$(which brew)" ]; then brew install restic;
 # Nix & NixOS
-elif [ -f "$(which nix-env)" ]; then nix-env --install restic;
+elif [ -x "$(which nix-env)" ]; then nix-env --install restic;
 # OpenBSD
-elif [ -f "$(which pkg_add)" ]; then pkg_add restic;
+elif [ -x "$(which pkg_add)" ]; then pkg_add restic;
 # FreeBSD
-elif [ -f "$(which pkg)" ]; then pkg install restic;
+elif [ -x "$(which pkg)" ]; then pkg install restic;
 # openSUSE
-elif [ -f "$(which zypper)" ]; then zypper install restic;
+elif [ -x "$(which zypper)" ]; then zypper install restic;
 # RHEL & CentOS
-elif [ -f "$(which yum)" ]; then yum install yum-plugin-copr && yum copr enable copart/restic && yum install restic;
+elif [ -x "$(which yum)" ]; then yum install yum-plugin-copr && yum copr enable copart/restic && yum install restic;
 # Solus
-elif [ -f "$(which eopkg)" ]; then eopkg install restic;
+elif [ -x "$(which eopkg)" ]; then eopkg install restic;
 # Windows
-elif [ -f "$(which scoop)" ]; then scoop install restic;
+elif [ -x "$(which scoop)" ]; then scoop install restic;
 fi
 
 ### CONFIGURE RESTIC
