@@ -1,7 +1,37 @@
 #!/bin/bash
 
+DEEP_INTEGRITY_CHECK=0
+
 source conf/aws
 
-for ITEM in $(cat conf/files); do
-  restic -r s3:s3.amazonaws.com/$bucket --verbose backup $ITEM
+while getopts ":h" opt; do
+  case ${opt} in
+    d )
+      DEEP_INTEGRITY_CHECK=1
+      ;;
+    h )
+      echo "Usage: $0 [-h] [-d]"
+      echo -e "\nOptions:\n"
+      echo "-h   Help"
+      echo "-d   Enable Deep Integrity Checks."
+      echo "     Since it has to download all data files in the repository,"
+      echo "     beware that it might incur higher bandwidth costs than usual"
+      echo "     and also that it takes more time than the default check."
+      echo "     (default: off)"
+      exit 0
+      ;;
+  esac
 done
+
+echo "### BACKUPPING FILES"
+for ITEM in $(cat conf/files); do
+    echo "> Backupping '$ITEM'..."
+    restic -r s3:s3.amazonaws.com/$bucket --verbose backup $ITEM
+done
+
+echo "### INTEGRITY CHECKS"
+CHECK_FLAG=""
+if [ $DEEP_INTEGRITY_CHECK -eq 1 ]; then
+    CHECK_FLAG="--read-data"
+fi
+restic -r s3:s3.amazonaws.com/$bucket check $CHECK_FLAG

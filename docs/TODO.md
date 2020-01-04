@@ -4,9 +4,8 @@
  - TravisCI
  - GitHub Page
  - GUI
- - Compression
+ - [Compression](https://github.com/restic/restic/issues/21)
  - Scheduling
- - Verify integrity
  - Retention
  - --help, --verbose, --progress, --version
  - Autocreate bucket
