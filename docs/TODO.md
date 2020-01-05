@@ -10,4 +10,3 @@ permalink: /docs/TODO/
  - Scheduling
  - Retention
  - Autocreate bucket
- - Restore

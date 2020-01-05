@@ -4,7 +4,15 @@ permalink: /docs/USAGE/
 # USAGE
 
 ```
-Usage: ./bin/s3backupper [-h] [-dv]
+S3Backupper v1.0.0 by Fabio Cicerchia
+
+Usage: ./bin/s3backupper [COMMAND] [-h] [-dv] [RESTORE_FOLDER]
+
+Commands:
+
+backup    Create a new backup snapshot.
+restore   Restore an existent backup snapshot.
+version   Print current version.
 
 Options:
 
@@ -15,6 +23,11 @@ Options:
      (default: off)
 -v   Verbose.
 -h   Help.
+
+Examples:
+
+ ./bin/s3backupper backup -d
+ ./bin/s3backupper restore /path/to/restored/backup
 ```
 
 ## File List
