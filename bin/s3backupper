@@ -20,6 +20,7 @@ while getopts ":dvh" opt; do
       echo "Usage: $0 [COMMAND] [-h] [-dv] [RESTORE_FOLDER]"
       echo -e "\nCommands:\n"
       echo "backup    Create a new backup snapshot."
+      echo "browse    Mount locally and browse the files."
       echo "restore   Restore an existent backup snapshot."
       echo "version   Print current version."
       echo -e "\nOptions:\n"
@@ -32,6 +33,7 @@ while getopts ":dvh" opt; do
       echo "-h   Help."
       echo -e "\nExamples:\n"
       echo " $0 backup -d"
+      echo " $0 browse /mnt/latest-backup"
       echo " $0 restore /path/to/restored/backup"
       exit 0
       ;;
@@ -40,11 +42,7 @@ done
 
 COMMAND=$1
 
-if [ "$COMMAND" == "version" ]; then
-    echo $VERSION
-    exit 0
-
-elif [ "$COMMAND" == "backup" ]; then
+if [ "$COMMAND" == "backup" ]; then
     echo "### BACKUPPING FILES"
     VERBOSE_FLAG=""
     if [ $VERBOSE -eq 1 ]; then
@@ -63,8 +61,18 @@ elif [ "$COMMAND" == "backup" ]; then
     restic -r s3:s3.amazonaws.com/$bucket $VERBOSE_FLAG check $CHECK_FLAG
     exit 0
 
+elif [ "$COMMAND" == "browse" ]; then
+    TARGET_RESTORE_FOLDER=$2
+    restic -r s3:s3.amazonaws.com/$bucket $VERBOSE_FLAG mount $TARGET_RESTORE_FOLDER
+    exit 0
+
 elif [ "$COMMAND" == "restore" ]; then
     TARGET_RESTORE_FOLDER=$2
     restic -r s3:s3.amazonaws.com/$bucket $VERBOSE_FLAG restore latest --target $TARGET_RESTORE_FOLDER
     exit 0
+
+elif [ "$COMMAND" == "version" ]; then
+    echo $VERSION
+    exit 0
+
 fi
