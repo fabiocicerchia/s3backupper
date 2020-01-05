@@ -10,3 +10,6 @@ permalink: /docs/TODO/
  - Scheduling
  - Retention
  - Autocreate bucket
+ - Restic via Docker
+ - One folder per device
+ - Change password
