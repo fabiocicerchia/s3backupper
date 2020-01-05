@@ -1,3 +1,6 @@
+---
+permalink: /docs/USAGE/
+---
 # USAGE
 
 ```

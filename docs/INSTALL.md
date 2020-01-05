@@ -1,3 +1,6 @@
+---
+permalink: /docs/INSTALL/
+---
 # INSTALL
 
 Just run the following one-liner:

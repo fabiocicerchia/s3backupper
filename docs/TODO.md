@@ -1,8 +1,10 @@
+---
+permalink: /docs/TODO/
+---
 # TODO
 
  - Tests
  - TravisCI
- - GitHub Page
  - GUI
  - [Compression](https://github.com/restic/restic/issues/21)
  - Scheduling

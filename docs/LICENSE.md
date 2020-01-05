@@ -1,3 +1,6 @@
+---
+permalink: /docs/LICENSE/
+---
 MIT License
 
 Copyright (c) 2019 Fabio Cicerchia
