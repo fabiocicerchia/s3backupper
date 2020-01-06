@@ -51,7 +51,7 @@ elif [ "$COMMAND" == "backup" ]; then
     if [ $VERBOSE -eq 1 ]; then
         VERBOSE_FLAG="--verbose"
     fi
-    for ITEM in $(cat conf/files); do
+    for ITEM in $(cat conf/files | grep -v '^#'); do
         echo "> Backupping '$ITEM'..."
         restic -r s3:s3.amazonaws.com/$bucket $VERBOSE_FLAG backup $ITEM
     done
@@ -61,17 +61,17 @@ elif [ "$COMMAND" == "backup" ]; then
     if [ $DEEP_INTEGRITY_CHECK -eq 1 ]; then
         CHECK_FLAG="--read-data"
     fi
-    restic -r s3:s3.amazonaws.com/$bucket $VERBOSE_FLAG check $CHECK_FLAG
+    restic -r s3:s3.amazonaws.com/$bucket -o s3.region=$region $VERBOSE_FLAG check $CHECK_FLAG
     exit 0
 
 elif [ "$COMMAND" == "browse" ]; then
     TARGET_RESTORE_FOLDER=$2
-    restic -r s3:s3.amazonaws.com/$bucket $VERBOSE_FLAG mount $TARGET_RESTORE_FOLDER
+    restic -r s3:s3.amazonaws.com/$bucket -o s3.region=$region $VERBOSE_FLAG mount $TARGET_RESTORE_FOLDER
     exit 0
 
 elif [ "$COMMAND" == "restore" ]; then
     TARGET_RESTORE_FOLDER=$2
-    restic -r s3:s3.amazonaws.com/$bucket $VERBOSE_FLAG restore latest --target $TARGET_RESTORE_FOLDER
+    restic -r s3:s3.amazonaws.com/$bucket -o s3.region=$region $VERBOSE_FLAG restore latest --target $TARGET_RESTORE_FOLDER
     exit 0
 
 elif [ "$COMMAND" == "version" ]; then

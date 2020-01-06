@@ -13,3 +13,5 @@ permalink: /docs/TODO/
  - Restic via Docker
  - One folder per device
  - Change password
+ - Anti-ransomware
+ - Antivirus check
