@@ -6,6 +6,8 @@ VERBOSE=0
 
 source conf/aws
 
+COMMAND=$1
+
 while getopts ":dvh" opt; do
   case ${opt} in
     d )
@@ -15,34 +17,35 @@ while getopts ":dvh" opt; do
       VERBOSE=1
       ;;
     h )
-      echo "S3Backupper v$VERSION by Fabio Cicerchia"
-      echo ""
-      echo "Usage: $0 [COMMAND] [-h] [-dv] [RESTORE_FOLDER]"
-      echo -e "\nCommands:\n"
-      echo "backup    Create a new backup snapshot."
-      echo "browse    Mount locally and browse the files."
-      echo "restore   Restore an existent backup snapshot."
-      echo "version   Print current version."
-      echo -e "\nOptions:\n"
-      echo "-d   Enable Deep Integrity Checks."
-      echo "     Since it has to download all data files in the repository,"
-      echo "     beware that it might incur higher bandwidth costs than usual"
-      echo "     and also that it takes more time than the default check."
-      echo "     (default: off)"
-      echo "-v   Verbose."
-      echo "-h   Help."
-      echo -e "\nExamples:\n"
-      echo " $0 backup -d"
-      echo " $0 browse /mnt/latest-backup"
-      echo " $0 restore /path/to/restored/backup"
-      exit 0
+      COMMAND="help"
       ;;
   esac
 done
 
-COMMAND=$1
-
-if [ "$COMMAND" == "backup" ]; then
+if [ "$COMMAND" == "help" -o "$COMMAND" == "" ]; then
+    echo "S3Backupper v$VERSION by Fabio Cicerchia"
+    echo ""
+    echo "Usage: $0 [COMMAND] [-h] [-dv] [RESTORE_FOLDER]"
+    echo -e "\nCommands:\n"
+    echo "backup    Create a new backup snapshot."
+    echo "browse    Mount locally and browse the files."
+    echo "help      Show help."
+    echo "restore   Restore an existent backup snapshot."
+    echo "version   Print current version."
+    echo -e "\nOptions:\n"
+    echo "-d   Enable Deep Integrity Checks."
+    echo "     Since it has to download all data files in the repository,"
+    echo "     beware that it might incur higher bandwidth costs than usual"
+    echo "     and also that it takes more time than the default check."
+    echo "     (default: off)"
+    echo "-v   Verbose."
+    echo "-h   Help."
+    echo -e "\nExamples:\n"
+    echo " $0 backup -d"
+    echo " $0 browse /mnt/latest-backup"
+    echo " $0 restore /path/to/restored/backup"
+    exit 0
+elif [ "$COMMAND" == "backup" ]; then
     echo "### BACKUPPING FILES"
     VERBOSE_FLAG=""
     if [ $VERBOSE -eq 1 ]; then

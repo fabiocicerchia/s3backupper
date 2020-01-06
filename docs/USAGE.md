@@ -12,6 +12,7 @@ Commands:
 
 backup    Create a new backup snapshot.
 browse    Mount locally and browse the files.
+help      Show help.
 restore   Restore an existent backup snapshot.
 version   Print current version.
 
